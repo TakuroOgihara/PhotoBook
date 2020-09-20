@@ -1,0 +1,228 @@
+@charset "UTF-8";
+
+/* すべての画面を最初は表示しない */
+.view {
+  display: none;
+}
+
+/**
+ * ------------------
+ * 最初のローディング表示
+ * ------------------
+ */
+#loading {
+  display: block;
+  position: relative;
+  height: 100vh;
+}
+
+.initial-loading-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -25px;
+  margin-left: -23px;
+  font-size: 46px;
+  animation: spin 2s linear infinite;
+}
+
+/* 回転するアニメーション */
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/**
+ * ----------
+ * ログイン画面
+ * ----------
+ */
+
+/* .container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 80px 0;
+  height: 400px;
+  text-align: center;
+} */
+
+#login h1 {
+  font-size: 40px;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-put;
+  font-weight: 200;
+}
+
+#login {
+  background: linear-gradient(#9cffb1, #c6ffd9);
+  width: 100%;
+  height: 100vh;
+}
+
+#login-form {
+  margin: 50px 0 0 0;
+}
+
+#login__help {
+  display: none;
+  text-align: center;
+}
+
+#login .login_title {
+  padding: 30vw 0 0 0;
+  text-align: center;
+}
+
+#login input {
+  display: block;
+  padding: 10px 20px;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #000000;
+  width: 35vw;
+  border-radius: 3px;
+
+  transition-duration: 0.5s;
+
+  font-size: 20px;
+}
+
+#login input:hover {
+  background-color: #ffffff;
+  opacity: 0.6;
+}
+
+#login input:focus {
+  background-color: #ffffff;
+  width: 50vw;
+  color: #000000;
+}
+
+.login__submit {
+  text-align: center;
+}
+
+#login-button {
+  padding: 5px 93px;
+}
+
+#photo-template {
+  display: none;
+}
+
+/* -------------------
+----------------------
+写真一覧 
+----------------------
+----------------------*/
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+#photoshelf header {
+  width: 100%;
+  height: 60px;
+  background-color: #1cad1c;
+}
+
+#header {
+  display: flex;
+  padding: 0 50px 0 50px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#site_title {
+  display: block;
+  margin: 0 0 0 50px;
+  font-weight: bold;
+}
+
+.add-button {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+}
+.add-button:hover {
+  text-decoration: none;
+  color: #ffffff;
+  opacity: 0.5;
+}
+.add-button:focus {
+  text-decoration: none;
+}
+
+#main {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+#photo-list {
+  margin: 20px auto;
+}
+
+.photo-item {
+  width: 270px;
+  margin: 15px;
+  float: left;
+  background-color: #ffffff;
+  border: solid 1px #ddd;
+}
+
+.photo-item__image-wrapper {
+  width: 270px;
+  height: 270px;
+  padding: 10px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.photo-item__image {
+  max-height: 250px;
+  max-width: 250px;
+  vertical-align: middle;
+}
+
+.photo-item__detail {
+  padding: 10px;
+  background-color: #fafafa;
+  border-top: solid 1px #ddd;
+}
+
+.photo-item__delete-wrapper {
+  margin-top: 5px;
+  text-align: right;
+}
+
+.photo-item__delete {
+  color: #000000;
+  background-color: transparent;
+  border-color: #000000;
+}
+.photo-item__delete:hover {
+  color: #ffffff;
+  background-color: #000000;
+  border-color: #000000;
+}
+
+/**
+ * -----------------
+ * 書籍情報追加モーダル
+ * -----------------
+ */
+
+#add-photo__help {
+  display: none;
+}
+
+.custom-file-label::after {
+  content: "参照";
+}
