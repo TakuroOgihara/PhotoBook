@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>Bookshelf | カンタン！あなたのオンライン本棚</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <!-- 自サイトのCSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- 最初のローディング表示 -->
+  <section id="loading" class="view">
+    <i class="initial-loading-icon fas fa-sync" aria-hidden="true"></i>
+  </section>
+  <!-- /#loading -->
+
+  <!-- ログイン画面 -->
+  <section id="login" class="view">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-10 col-md-8 col-lg-6">
+          <h1 class="login_title">ログイン画面</h1>
+          <form id="login-form">
+            <div class="form-group login__email">
+              <input id="login-email" type="email" placeholder="メールアドレス">
+            </div>
+            <div class="form-group login__password">
+              <input id="login-password" type="password" placeholder="パスワード">
+            </div>
+            <div id="login__help" class="alert alert-danger"></div>
+            <div class="form-group login__submit">
+              <button id="login__submit-button" type="submit" class="btn btn-success">
+                ログイン
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /#login -->
+
+  <!-- 写真一覧画面 -->
+  <section id="photoshelf" class="view">
+    <header>
+      <div id="header">
+        <div id="cover">
+          <h1 id="cover__title">PhotoGallery</h1>
+        </div>
+        <a href="#add-photo-modal" data-toggle="modal" class="add-button">
+          <i class="fas fa-plus-circle" aria-hidden="true"></i>
+          写真の登録
+        </a>
+        <button class="btn btn-light logout-button">
+          ログアウト
+        </button>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div id="main">
+        <div id="photo-list" class="clearfix"></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="photo-template">
+    <!-- 写真のテンプレート -->
+    <div class="photo-item">
+      <div class="photo-item__image-wrapper">
+        <img class="photo-item__image" alt="">
+      </div>
+      <div class="photo-item__detail">
+        <div class="photo-item__delete-wrapper">
+          <button class="btn btn-danger photo-item__delete">
+            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+            削除
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 写真情報追加モーダル -->
+  <div id="add-photo-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">写真の登録</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body m-1">
+          <form id="photo-form">
+            <div class="form-group row">
+              <div class="col-md-3">写真</div>
+              <div class="col-md-9">
+                <div class="custom-file">
+                  <input id="add-photo-image" type="file" accept=".jpg,.jpeg,.png,.gif, image/jpeg,image/png,image/gif"
+                    class="custom-file-input" required>
+                  <label id="add-photo-image-label" class="custom-file-label" for="add-book-image">ファイルを選択</label>
+                </div>
+              </div>
+            </div>
+            <div id="add-photo__help" class="alert alert-danger"></div>
+            <button id="submit_add_photo" type="submit" class="btn btn-default btn-success btn-block">
+              保存する
+            </button>
+        </div>
+        </form>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+  </div>
+  <!-- /#add-book-modal -->
+
+  <!-- Firebaseのセットアップコード（下記のSDKのバージョンは6.2.0） -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#config-web-app
+        (使いたいFirebaseサービス用のSDKを加えます) -->
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-storage.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyCFYyKvLgjslJ_qOy73TxnlgLLauyZakIs",
+      authDomain: "bookshelf-97acb.firebaseapp.com",
+      databaseURL: "https://bookshelf-97acb.firebaseio.com",
+      projectId: "bookshelf-97acb",
+      storageBucket: "bookshelf-97acb.appspot.com",
+      messagingSenderId: "399498526453",
+      appId: "1:399498526453:web:24e7d860e11ca040e24fbc",
+      measurementId: "G-9KN7SK1QT4"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+  <!-- Popper.js, 次に Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script src="js/main.js"></script>
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+</body>
+
+</html>
