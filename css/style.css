@@ -70,7 +70,7 @@
 }
 
 #login .login_title {
-  padding: 30vw 0 0 0;
+  padding: 10vw 0 0 0;
   text-align: center;
 }
 
@@ -160,18 +160,21 @@
 }
 
 #main {
-  width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
 
 #photo-list {
   margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .photo-item {
   width: 270px;
   margin: 15px;
-  float: left;
+  /* float: left; */
   background-color: #ffffff;
   border: solid 1px #ddd;
 }
